@@ -10,6 +10,31 @@ Relationship.reset_pk_sequence
 Post.reset_pk_sequence
 User.reset_pk_sequence
 
+require 'uri'
+require 'net/http'
+require 'openssl'
+require 'json'
+
+url = URI("https://api.imgflip.com/get_memes")
+
+def getApi(url)
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+  
+    request = Net::HTTP::Get.new(url)
+    request["user-key"] = '8892e6dd302be8678337c69374af2568'
+  
+    response = http.request(request)
+    if response.code == "200"
+        result = JSON.parse(response.body)
+    end
+    return result["data"]["memes"]
+end
+
+image_name =getApi(url).map{|image| image["name"]}
+image_url = getApi(url).map{|image| image["url"]}
+
 User.create(username: "cy", email: "abc123@gmail.com", password: "abc123")
 User.create(username: "yc", email: "abc234@gmail.com", password: "abc123")
 Relationship.create(follower_id: 1,followed_id: 2)
@@ -32,13 +57,16 @@ end
     )
 end
 
-10.times do
+i = 0
+while i<20 do
     Post.create(
         user_id: rand(0..12),
-        content: Faker::Movies::StarWars.quote,
-        image: "https://images.unsplash.com/photo-1600615614799-2cd68cb75705?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max"
+        content: image_name[i],
+        image: image_url[i]
     )
+    i+=1
 end
+
 
 30.times do
     Like.create(
