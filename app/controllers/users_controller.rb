@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :authorized, only: [:keep_logged_in]
+    
     def index
         users = User.all.sort{ |a, b| b <=> a }
         render json: users
@@ -24,13 +26,25 @@ class UsersController < ApplicationController
                     token: wristband_token
                 }
             else
-                render json: {error: "INVALID EMAIL ADDRESS"}, status: 422
+                render json: {error: "This email address is alredy being used"}, status: 422
             end
         else
-            render json: {error: "INVALID EMAIL ADDRESS/PASSWORD"}, satus: 422
+            render json: {error: "Incorrect email address/password"}, satus: 422
         end
     end
     
+
+    def keep_logged_in
+        # @user exists here because of the before_action
+        wristband_token = encode_token({user_id: @user.id})
+
+        render json: {
+            user: UserSerializer.new(@user),
+            token: wristband_token
+        }
+    end
+
+
     private
     def user_params
         params.permit(:username, :password, :email)
