@@ -26,7 +26,7 @@ class UsersController < ApplicationController
                     token: wristband_token
                 }
             else
-                render json: {error: "This email address is alredy being used"}, status: 422
+                render json: {error: "This email address is alredy being registered"}, status: 422
             end
         else
             render json: {error: "Incorrect email address/password"}, satus: 422
@@ -42,6 +42,12 @@ class UsersController < ApplicationController
             user: UserSerializer.new(@user),
             token: wristband_token
         }
+    end
+
+    def update
+        user = User.find(params[:id])
+        user.update(user_params)
+        render json: user
     end
 
 
