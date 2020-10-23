@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-
-    has_one_attached :avatar
-    
     has_secure_password
     has_many :posts, dependent: :destroy
     has_many :likes, dependent: :destroy
@@ -20,5 +17,7 @@ class User < ApplicationRecord
     has_many :followers, through: :followeds, source: :follower
 
     validates_uniqueness_of :email
+    # validates_uniqueness_of :follower_id
+    # validates_uniqueness_of :followed_id
 end
 

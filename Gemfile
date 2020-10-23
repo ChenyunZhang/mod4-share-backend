@@ -47,3 +47,5 @@ gem 'active_model_serializers'
 gem 'faker'
 
 gem 'activerecord-reset-pk-sequence'
+
+gem 'unsplash'
