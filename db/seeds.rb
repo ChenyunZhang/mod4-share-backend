@@ -87,14 +87,14 @@ image_alt = unsplash_alt_arr.flatten
 # image_name =getApi(url).map{|image| image["name"]}
 # image_url = getApi(url).map{|image| image["url"]}
 
-User.create(username: "Chenyun", email: "abc123@gmail.com", gender: "I prefer not to say",location: "New York" ,password: "abc123", avatar: "https://images.unsplash.com/photo-1603316567945-0f49f8a506f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+User.create(username: "Chenyun", email: "abc123@gmail.com", gender: "I prefer not to say",location: "New York" ,password: "abc123", avatar: "https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
 User.create(username: "Micky", email: "abc1234@gmail.com", gender: "I prefer not to say", location: "New York" ,password: "abc123",avatar:"https://images.unsplash.com/photo-1603309832178-2b8956de492f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
 Relationship.create(follower_id: 1,followed_id: 2)
 Relationship.create(follower_id: 2,followed_id: 1)
-Post.create(user_id: 1,content: "Cute dog", image: "https://images.unsplash.com/photo-1601224503166-47e6afa2fc92?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixlib=rb-1.2.1&q=80&w=400")
-Post.create(user_id: 2,content: "What a nice day", image: "https://images.unsplash.com/photo-1601877346351-af65828f6d59?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixlib=rb-1.2.1&q=80&w=400")
+Post.create(user_id: 1,content: "Cute dog", image: image_url[rand(0..100)])
+Post.create(user_id: 2,content: "What a nice day", image: image_url[rand(0..100)])
 
-60.times do
+30.times do
     User.create(
         username: Faker::Name.name,
         email: Faker::Internet.email,
@@ -107,15 +107,15 @@ end
 
 5.times do
     Relationship.create(
-        follower_id: rand(0..50),
-        followed_id: rand(0..50)
+        follower_id: rand(0..30),
+        followed_id: rand(0..30)
     )
 end
 
 i = 0
-while i<60 do
+while i<51 do
     Post.create(
-        user_id: rand(0..50),
+        user_id: rand(0..30),
         content: image_alt[i],
         image: image_url[i]
     )
@@ -125,15 +125,15 @@ end
 
 20.times do
     Like.create(
-        user_id: rand(0..50),
-        post_id: rand(0..50)
+        user_id: rand(0..30),
+        post_id: rand(0..30)
     )
 end
 
-60.times do
+30.times do
     Comment.create(
-        user_id: rand(0..50),
-        post_id: rand(0..50),
+        user_id: rand(0..30),
+        post_id: rand(0..30),
         content: Faker::Quote.most_interesting_man_in_the_world
     )
 end
