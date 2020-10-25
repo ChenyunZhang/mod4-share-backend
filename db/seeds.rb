@@ -94,7 +94,7 @@ Relationship.create(follower_id: 2,followed_id: 1)
 Post.create(user_id: 1,content: "Cute dog", image: "https://images.unsplash.com/photo-1601224503166-47e6afa2fc92?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixlib=rb-1.2.1&q=80&w=400")
 Post.create(user_id: 2,content: "What a nice day", image: "https://images.unsplash.com/photo-1601877346351-af65828f6d59?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=400&ixlib=rb-1.2.1&q=80&w=400")
 
-5.times do
+50.times do
     User.create(
         username: Faker::Name.name, 
         email: Faker::Internet.email, 
@@ -105,17 +105,17 @@ Post.create(user_id: 2,content: "What a nice day", image: "https://images.unspla
     )
 end
 
-5.times do
+30.times do
     Relationship.create(
-        follower_id: rand(0..5),
-        followed_id: rand(0..5)
+        follower_id: rand(0..50),
+        followed_id: rand(0..50)
     )
 end
 
 i = 0
-while i<5 do
+while i<60 do
     Post.create(
-        user_id: rand(0..25),
+        user_id: rand(0..50),
         content: image_alt[i],
         image: image_url[i]
     )
@@ -123,17 +123,17 @@ while i<5 do
 end
 
 
-5.times do
+30.times do
     Like.create(
-        user_id: rand(0..5),
-        post_id: rand(0..5)
+        user_id: rand(0..50),
+        post_id: rand(0..50)
     )
 end
 
-4.times do
+30.times do
     Comment.create(
-        user_id: rand(0..5),
-        post_id: rand(0..5),
+        user_id: rand(0..50),
+        post_id: rand(0..50),
         content: Faker::Quote.most_interesting_man_in_the_world
     )
 end
