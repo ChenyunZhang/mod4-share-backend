@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     before_action :authorized, only: [:keep_logged_in]
     
     def index
-        users = User.all.sort{ |a, b| b <=> a }
+        users = User.all.sort{ |a, b| a <=> b }
         render json: users
     end
 
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.permit(:username, :password, :email)
+        params.permit(:username, :gender, :password, :email, :location)
     end
 end
 

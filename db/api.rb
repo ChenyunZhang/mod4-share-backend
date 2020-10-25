@@ -4,10 +4,8 @@ require 'openssl'
 require 'json'
 require 'news-api'
 
-searchterm="funny"
-
 meme_url = URI("https://api.imgflip.com/get_memes")
-unsplash_url= URI("https://api.unsplash.com/search/photos?page=1&query=#{searchterm}&client_id=tiLpw6NIQBzOyXVdnNxVbVpkgLI0mCidl3M7DgbM1wc")
+# unsplash_url= URI("https://api.unsplash.com/search/photos?page=#{rand(1..10)}&query=#{searchterm}&client_id=tiLpw6NIQBzOyXVdnNxVbVpkgLI0mCidl3M7DgbM1wc")
 news_url= URI("https://newsapi.org/v2/top-headlines?country=us&apiKey=4356361c0167497ca9323489c48b461ezz")
 
 def get_meme_Api(url)
@@ -25,6 +23,7 @@ def get_meme_Api(url)
     memeImg = result["data"]["memes"]
 end
 
+
 def get_unsplash_api(url)
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
@@ -37,11 +36,24 @@ def get_unsplash_api(url)
     if response.code == "200"
         result = JSON.parse(response.body)
     end
-
-    picture = result["results"].map{|seed|  seed["urls"]["small"]}
-    picture.length
+    result["results"].map{|seed| seed["alt_description"]}
+    # picture = result["results"].map{|seed|  seed["urls"]["small"]}
 end
 
+searchterm="funny"
+unsplash_url= URI("https://api.unsplash.com/search/photos?page=1&query=#{searchterm}&client_id=tiLpw6NIQBzOyXVdnNxVbVpkgLI0mCidl3M7DgbM1wc")
+# p get_unsplash_api(unsplash_url)
+
+i = 0
+searchterm="funny"
+unsplash_arr = []
+while i < 5 do
+    unsplash_url= URI("https://api.unsplash.com/search/photos?page=#{i}&query=#{searchterm}&client_id=tiLpw6NIQBzOyXVdnNxVbVpkgLI0mCidl3M7DgbM1wc")
+    unsplash_arr << get_unsplash_api(unsplash_url)
+    i+=1
+end
+
+# p unsplash_arr.flatten.length
 # 4356361c0167497ca9323489c48b461e
 
 def get_news_api(url)
@@ -59,9 +71,6 @@ def get_news_api(url)
 
     news = result
 end
-
-
-p get_news_api(news_url)
 
 # p get_unsplash_api(unsplash_url)
 
@@ -82,3 +91,15 @@ p get_news_api(news_url)
 #     end
 # end
 # print_message(chenyuns_message)
+
+url="https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=JC0T7bCpESCb2SGJBe6axdrSFW0X03H7"
+
+def get_nyt_Api(url)
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    x = JSON.parse(response)
+
+    p x["results"].length
+end
+
+get_nyt_Api(url)
