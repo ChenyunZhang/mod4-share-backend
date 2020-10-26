@@ -26,7 +26,7 @@ class UsersController < ApplicationController
                     token: wristband_token
                 }
             else
-                render json: {error: "This email address is alredy being registered"}, status: 422
+                render json: {error: "This email address is alredy being registered/Password needs to be at least 6 characters long"}, status: 422
             end
         else
             render json: {error: "Incorrect email address/password"}, satus: 422

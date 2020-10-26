@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
     validates_uniqueness_of :email
     validates_uniqueness_of :username
+    validates :password, length: { in: 6..20 }
     # validates_uniqueness_of :follower_id
     # validates_uniqueness_of :followed_id
 end

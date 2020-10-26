@@ -94,7 +94,7 @@ Relationship.create(follower_id: 2,followed_id: 1)
 Post.create(user_id: 1,content: "Cute dog", image: image_url[rand(0..100)])
 Post.create(user_id: 2,content: "What a nice day", image: image_url[rand(0..100)])
 
-30.times do
+70.times do
     User.create(
         username: Faker::Name.name,
         email: Faker::Internet.email,
@@ -113,9 +113,9 @@ end
 end
 
 i = 0
-while i<51 do
+while i<70 do
     Post.create(
-        user_id: rand(0..30),
+        user_id: rand(0..70),
         content: image_alt[i],
         image: image_url[i]
     )
@@ -123,17 +123,17 @@ while i<51 do
 end
 
 
-20.times do
+70.times do
     Like.create(
-        user_id: rand(0..30),
-        post_id: rand(0..30)
+        user_id: rand(0..70),
+        post_id: rand(0..70)
     )
 end
 
-30.times do
+70.times do
     Comment.create(
-        user_id: rand(0..30),
-        post_id: rand(0..30),
+        user_id: rand(0..70),
+        post_id: rand(0..70),
         content: Faker::Quote.most_interesting_man_in_the_world
     )
 end
