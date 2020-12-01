@@ -49,3 +49,14 @@ gem 'faker'
 gem 'activerecord-reset-pk-sequence'
 
 gem 'unsplash'
+
+gem 'dotenv-rails', groups: [:development, :test, :production]
+
+gem 'nokogiri' 
+
+gem 'uri'
+
+gem 'openssl'
+
+gem 'json'
+
