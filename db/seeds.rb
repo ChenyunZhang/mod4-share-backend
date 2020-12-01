@@ -14,8 +14,9 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
-require 'Dotenv'
-Dotenv.load("../.env")
+# require 'Dotenv'
+
+# Dotenv.load("../.env")
 
 def get_unsplash_api(url)
     uri = URI(url)
@@ -114,3 +115,5 @@ end
 
 Like.create(user_id: 1, post_id: 1)
 Like.create(user_id: 1, post_id: 2)
+
+puts "😀"
