@@ -28,6 +28,6 @@
 /db/api.rb
 # Ignore application configuration
 /config/application.yml
-/.env
+# /.env
 
-/config/cloudinary.yml
+# /config/cloudinary.yml

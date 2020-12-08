@@ -14,9 +14,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
-require 'Dotenv'
 
-Dotenv.load("../.env")
 
 def get_unsplash_api(url)
     uri = URI(url)
@@ -42,7 +40,7 @@ unsplash_img_arr = []
 unsplash_alt_arr = []
 
 while i < 10 do
-    unsplash_url= URI("https://api.unsplash.com/search/photos?page=#{i}&query=#{searchterm}&client_id=#{ENV["UNSPLASH_ID"]}")
+    unsplash_url= URI("https://api.unsplash.com/search/photos?page=#{i}&query=#{searchterm}&client_id=tiLpw6NIQBzOyXVdnNxVbVpkgLI0mCidl3M7DgbM1wc")
     unsplash_img_arr << get_unsplash_api(unsplash_url)
     i+=1
 end
@@ -50,7 +48,7 @@ end
 i = 0
 
 while i < 10 do
-    unsplash_url= URI("https://api.unsplash.com/search/photos?page=#{i}&query=#{searchterm}&client_id=#{ENV["UNSPLASH_ID"]}")
+    unsplash_url= URI("https://api.unsplash.com/search/photos?page=#{i}&query=#{searchterm}&client_id=tiLpw6NIQBzOyXVdnNxVbVpkgLI0mCidl3M7DgbM1wc")
     unsplash_alt_arr << get_alt_api(unsplash_url)
     i+=1
 end
