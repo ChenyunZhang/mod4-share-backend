@@ -1,0 +1,19 @@
+development:
+  cloud_name: chenyunz
+  api_key: '494669682279328'
+  api_secret: gORdNMB41Rc4Zfk4Svxn73U51Pc
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: chenyunz
+  api_key: '494669682279328'
+  api_secret: gORdNMB41Rc4Zfk4Svxn73U51Pc
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: chenyunz
+  api_key: '494669682279328'
+  api_secret: gORdNMB41Rc4Zfk4Svxn73U51Pc
+  enhance_image_tag: true
+  static_file_support: false
+
