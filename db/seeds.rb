@@ -14,9 +14,6 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 require 'json'
-require 'Dotenv'
-
-Dotenv.load("../.env")
 
 def get_unsplash_api(url)
     uri = URI(url)
