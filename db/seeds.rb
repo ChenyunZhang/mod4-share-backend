@@ -15,10 +15,6 @@ require 'net/http'
 require 'openssl'
 require 'json'
 
-require 'Dotenv'
-
-Dotenv.load("../.env")
-
 def get_unsplash_api(url)
     uri = URI(url)
     response = Net::HTTP.get_response(uri)
@@ -70,7 +66,7 @@ Post.create(user_id: 1,content: "Cute dog", image: image_url[rand(0..100)])
 Post.create(user_id: 2,content: "What a nice day", image: image_url[rand(0..100)])
 
 
-70.times do
+30.times do
     User.create(
         username: Faker::Name.name,
         email: Faker::Internet.email,
@@ -89,7 +85,7 @@ end
 end
 
 i = 0
-while i<70 do
+while i<40 do
     Post.create(
         user_id: rand(0..70),
         content: image_alt[i],
