@@ -1,0 +1,22 @@
+current directory: /Users/chenyunzhang/Projects/flatiron_projects/shared/shared-backend/vendor/bundle/ruby/2.6.0/gems/puma-4.3.10/ext/puma_http11
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20220202-21559-ipxlam.rb extconf.rb
+checking for BIO_read() in -lcrypto... no
+checking for BIO_read() in -llibeay32... no
+creating Makefile
+
+current directory: /Users/chenyunzhang/Projects/flatiron_projects/shared/shared-backend/vendor/bundle/ruby/2.6.0/gems/puma-4.3.10/ext/puma_http11
+make "DESTDIR=" clean
+
+current directory: /Users/chenyunzhang/Projects/flatiron_projects/shared/shared-backend/vendor/bundle/ruby/2.6.0/gems/puma-4.3.10/ext/puma_http11
+make "DESTDIR="
+compiling http11_parser.c
+compiling io_buffer.c
+compiling mini_ssl.c
+compiling puma_http11.c
+linking shared-object puma/puma_http11.bundle
+ld: warning: directory not found for option '-L/System/Volumes/Data/SWE/macOS/BuildRoots/5b2e67f8af/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.Internal.sdk/usr/local/libressl-by-deployment-target/11.0/lib'
+ld: warning: directory not found for option '-L/System/Volumes/Data/SWE/macOS/BuildRoots/5b2e67f8af/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.Internal.sdk/usr/local/lib'
+
+current directory: /Users/chenyunzhang/Projects/flatiron_projects/shared/shared-backend/vendor/bundle/ruby/2.6.0/gems/puma-4.3.10/ext/puma_http11
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 puma_http11.bundle ./.gem.20220202-21559-1wlikzc/puma
